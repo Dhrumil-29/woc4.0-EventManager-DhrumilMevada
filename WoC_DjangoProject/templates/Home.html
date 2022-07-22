@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Luxurious+Roman&display=swap" rel="stylesheet"> -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bitter:ital,wght@1,600&family=Dancing+Script:wght@600&family=Luxurious+Roman&display=swap" rel="stylesheet">
+      <!-- <link rel="stylesheet" type="text/css" href="{% static 'CSS/cssfile.css'%}"> -->
+      <style>
+        *{
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Dancing Script', cursive;
+          font-family: 'Luxurious Roman', cursive;
+        }
+      .home{
+        /* background-image: url('https://mindlercareerlibrarynew.imgix.net/17A-Event_Management.png'); */
+        /* width: 100px;
+        height: 500px;
+        background-size:cover;
+        background-repeat: no-repeat; */
+        background-image: url(/static/img/bg.png);
+        height: 90.8vh;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .right{   
+          align-items: right;
+          text-align: center;
+          text-decoration: none;
+          font-size: 23px;
+          float: right;
+          margin: -5px 20px 0 0;
+          padding: 7px 25px;
+          color: white;
+          border : 2px solid white;
+          /* background-color: rgb(199, 126, 49); */
+          border-radius: 5px;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 10px;
+      }
+
+      li a {
+        display: block;
+        color: blue;
+        padding: 8px 16px;
+      }
+
+      a {
+        /* display: flex; */
+        color: white;
+        font-family: 'Dancing Script', cursive;
+        font-family: 'Luxurious Roman', cursive;
+        margin: 10px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 23px;
+        font-weight: 500;
+      }
+
+      header nav ul .else a:hover{
+        font-size: 28px;
+        color: rgb(107 145 255);
+        margin: 10px;
+        /* font-style: italic; */
+        font-weight: 1000;
+      }
+      header nav ul .lg a .right:hover{
+        color: #ffffff;
+        border: 2px solid #ffffff;
+        border-radius: 5px;
+        background-color: #4500ffa6;
+        font-weight: 1000;
+      }
+
+      nav {
+        width: 100%;
+        height: 60px;
+        padding: 5px;
+      }
+
+      body{
+        /* background: linear-gradient(90deg,#9688ff,#2e2f7e); */
+      }
+
+      .main5{
+        /* display: flex; */
+        /* height: 100vh; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* padding : 10px; */
+        /* margin: 70px; */
+        display: flex; */
+        /* height: 100vh; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        /* padding: 10px; */
+        /* margin: 70px; */
+        display: flex;
+        /* height: 100vh; */
+        width: 65%;
+        color: black;
+        justify-content: center;
+        align-items: center;
+        padding: 70px 0px;
+        border: 2px solid black;
+        margin: 150px 265.862px;
+        /* margin: 7% 0px 0px 25%; */
+        /* margin: auto; */
+        background: linear-gradient(343deg,#2bc87b,white);
+        border-radius: 2rem;
+      }
+    .current{
+      display: inline-block;
+      /* color: blue; */
+      /* background-color: white; */
+      /* border: 2px dotted blue; */
+      border-radius: 5px;
+      /* background-color: white; */
+      font-weight: 1000;
+    }
+
+    .current a{
+      color: yellow;
+      font-weight: bold;
+      font-style: oblique;
+      /* font-size: 23px; */
+    }
+    .else{
+      display: inline-block;
+    }
+    .lg{
+      display: inline-block;
+      float: right;
+    }
+
+    .current-lg{
+      display: inline-block;
+      float: right; 
+    }
+
+    .current-lg .right{
+      color: yellow;
+      font-style: oblique;
+      border: 2px solid #ffffff;
+      border-radius: 5px;
+      background-color: #4500ffa6;
+      font-weight: 1000;
+    }
+    /* .container5{ */
+      .container5 {
+        font-size: 75px;
+        text-align: center;
+        font-weight: 1000;
+        color: white;
+        padding-top: 250px;
+        /* font-family: 'Anton', sans-serif; */
+        font-family: 'Bitter', serif;
+        /* font-family: 'Dancing Script', cursive; */
+        /* font-family: 'Luxurious Roman', cursive; */
+    }
+
+
+      header {
+        width: 100%;
+        height: 65px;
+        background: purple;
+        position: sticky;
+        top: 0;
+        z-index: 500;
+        background-color: #4b3570;
+        opacity: 1;
+      }
+      </style>
+    </head>
+    
+    <body>
+      <header>
+        <nav>
+          <ul>
+            <div class="current">  
+              <a href="/">Home</a>
+            </div>
+            <div class="else">
+              <a href="/event_registration">Event Registration</a>
+            </div>
+            <div class="else">  
+              <a href="/participant_registration">Participant Registration</a>
+            </div>
+            <div class="else">  
+              <a href="/event_detail">Event Details</a>
+            </div>
+            <div class="lg">
+              <a href="/login"><span class = "right">User Profile</span></a>
+            </div>
+          </ul>
+        </nav>
+      </header>
+      <div class="home" style="background-image: url('{% static 'img/bg.png' %}'); ">
+      <!-- <div class="main5"> -->
+      <div class="container5" style="text-align: center;">
+        <p> Welcome to Our </p>
+        <p>Event Management</p>
+      </div> 
+      <!-- </div> -->
+    </div>
+
+  </body>
+</html>

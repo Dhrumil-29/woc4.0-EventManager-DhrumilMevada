@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Luxurious+Roman&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/cssfile.css'%}">
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <div class="else">  
+            <a href="/">Home</a>
+          </div>
+          <div class="else">
+            <a href="/event_registration">Event Registration</a>
+          </div>
+          <div class="else">  
+            <a href="/participant_registration">Participant Registration</a>
+          </div>
+          <div class="current">  
+            <a href="/event_detail">Event Details</a>
+          </div>
+          <div class="lg">
+            <a href="/login"><span class = "right">User Profile</span></a>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <div class="main3">
+      <h1 class="container3">Events Details :- <hr></h1>
+    </div>
+      {% for event in event_list %}
+      <div class="main4">
+        <div class="container4">
+          <div style="margin-bottom: 15px;">
+            <h4 style="margin-bottom: 10px;"> 
+              <h2>Event Name :- <b>{{event.nEvent}} </b></h2>  
+              <hr>                              
+            </h4>
+            <br>
+            <p> <b>Description : </b> {{event.desc}} </p>
+            <p> <b>Host Name : </b> {{event.name}}</p>
+            <p> <b>Location : </b> {{event.location}} </p>
+            <p> <b>Host Email-ID : </b>{{event.host_email}} </p>        
+            <p> <b>Date : From : </b>{{event.stime}} <b> To : </b>{{event.etime}}</p>        
+            <p> <b>Registration Deadline : </b>{{event.deadline}} </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      
+    </body>
+    </html>
+    

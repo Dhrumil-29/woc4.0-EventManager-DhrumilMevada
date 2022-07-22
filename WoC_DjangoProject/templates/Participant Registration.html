@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>participant Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Luxurious+Roman&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/cssfile.css'%}">
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <div class="else">  
+            <a href="/">Home</a>
+          </div>
+          <div class="else">
+            <a href="/event_registration">Event Registration</a>
+          </div>
+          <div class="current">  
+            <a href="/participant_registration">Participant Registration</a>
+          </div>
+          <div class="else">  
+            <a href="/event_detail">Event Details</a>
+          </div>
+          <div class="lg">
+            <a href="/login"><span class = "right">User Profile</span></a>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <div class="main">
+      <div class="container">
+        <div class="title"><b>Participant Registration</b></div>
+        {% if message %}
+          <br>
+          <ul class="message">
+              <li>{{ message }}</li>
+          </ul>
+        {% endif %}
+        <form method = "POST" action="/participant_registration">
+        {% csrf_token %}
+        <div class="user-detail">
+          <div class="input-box">
+            <span class="detail">First Name :</span> 
+            <input type="text" placeholder="Enter Your First Name" name="fname" id="fname" required>
+          </div>
+          <div class="input-box">
+            <span class="detail">Last Name :</span> 
+            <input type="text" id="lname" name = "lname" placeholder="Enter Your Last Name" required>
+          </div>
+          <div class="input-box2">
+            <span class="detail">Contact No. :</span> 
+            <input type="number" name="num" id="num" placeholder="Enter Your Contact No.">
+          </div>
+          <div class="input-box2">
+            <span class="detail">Event Name :</span> 
+            <input type="text" id = "nevent" name= "nevent" placeholder="Type Event Name  (Find Event Names From Event Details Section...)" required />
+          </div>
+          <div class="input-box">
+              <span class="detail">Email ID:</span> 
+              <input type="email" name="email" id="email" placeholder="Enter Your Email" required>
+          </div>
+          <div class="input-box">
+              <span class="detail">Password :</span> 
+              <input type="password" name="password" id="password" placeholder="Enter Your Password" required>
+          </div>
+          <div class="input-box3">
+            <div class="person">
+                <span class="rdio1">
+                    <input onclick="hideppl()" type="radio" name="person" id="Individual" value="Individual" checked>
+                </span>
+                <span class="detail-l"> Individual </span> 
+                <span class="rdio2">
+                    <input onclick="showppl()" type="radio" name="person" id="Group" value="Group">
+                </span>
+                <span class="detail-r">Group</span>
+            </div>
+          </div>
+          <div class="input-box2" id = "number-ppl">
+            <span class="detail">No. Of Participants :</span> 
+              <input type="number" id="nopar" name="nopar" value="2">
+          </div>
+          <div class="button">
+              <input type="submit" value="Register">
+          </div>
+          <div class="button">
+              <input type="reset" value="Clear">
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+    
+    <script>
+      function hideppl() {            
+            document.getElementById("number-ppl").style.display = "none";
+        }
+      function showppl() {            
+          document.getElementById("number-ppl").style.display = "block";
+      }
+    </script>
+  </body>
+
+</html>

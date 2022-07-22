@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Luxurious+Roman&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/cssfile.css'%}">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <div class="else">  
+            <a href="/">Home</a>
+          </div>
+          <div class="current">
+            <a href="/event_registration">Event Registration</a>
+          </div>
+          <div class="else">  
+            <a href="/participant_registration">Participant Registration</a>
+          </div>
+          <div class="else">  
+            <a href="/event_detail">Event Details</a>
+          </div>
+          <div class="lg">
+            <a href="/login"><span class = "right">User Profile</span></a>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <div class="main">
+      <div class="container">
+        <div class="title"><b>Event Registration</b></div>
+        <form method="POST" action= "/event_registration">
+          {% csrf_token %}
+          <div class="user-detail">
+            {% if message %}
+            <br>
+              <ul class="message">
+                  <li>{{ message }}</li>
+              </ul>
+            {% endif %}
+            <div class="input-box2">
+              <span class="detail">Event Name :</span> 
+              <input type="text" id = "nEvent" name= "nEvent" placeholder="Type Event Name" required />
+            </div>
+            <div class="input-box2">
+              <span class="detail">Host Name :</span> 
+                <input type="text" placeholder="Enter Your First Name" name="name" id="name" required>
+            </div>
+            <div class="input-box2">
+                <span class="detail">Location :</span> 
+                <input type="text" name="location" id="location" placeholder="Enter Location">
+            </div>
+            <div class="input-box2">
+                <span class="detail">Description :</span> 
+                <textarea name="desc" id="desc" cols="0" rows="0" placeholder=""></textarea>
+            </div>
+            <div class="input-box">
+                <span class="detail">From :</span> 
+                <input type="datetime-local" name="stime" id="stime">
+            </div>
+            <div class="input-box">
+                <span class="detail">To :</span> 
+                <input type="datetime-local" name="etime" id="etime">
+            </div>
+            <div class="input-box2">
+                <span class="detail">Dead Line of Registration :</span> 
+                <input type="date" name="deadline" id="deadline">
+            </div>
+            <div class="input-box">
+                <span class="detail">Host Email-ID :</span> 
+                <input type="email" name="host_email" id="host_email" placeholder="Enter Your Email" required>
+            </div>
+            <div class="input-box">
+                <span class="detail">Password :</span> 
+                <input type="password" name="password" id="password" placeholder="Enter Your Password" required>
+            </div>
+            <div class="button">
+                <input type="submit" value="Register">
+            </div>
+            <div class="button">
+                <input type="reset" value="Clear">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

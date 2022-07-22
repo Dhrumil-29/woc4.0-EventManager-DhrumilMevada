@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Luxurious+Roman&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/cssfile.css'%}">
+</head>
+
+<body>
+    <header>
+        <nav>
+          <ul>
+            <div class="else">  
+              <a href="/">Home</a>
+            </div>
+            <div class="else">
+              <a href="/event_registration">Event Registration</a>
+            </div>
+            <div class="else">  
+              <a href="/participant_registration">Participant Registration</a>
+            </div>
+            <div class="else">  
+              <a href="/event_detail">Event Details</a>
+            </div>
+            <div class="current-lg">
+              <a href="/login"><span class = "right">Host Profile</span></a>
+            </div>
+          </ul>
+        </nav>
+      </header>
+      <div class="main">
+        <div class="container">
+            <div class="title"><h3><b>Login</b></h3></div>
+            <form method = "POST" action = "/login">
+                {% csrf_token %}
+                <div class="user-detail">
+                    <!-- <div class="input-box3">
+                        <div class="person">
+                            <span class="rdio1">
+                                <input onclick="showhost()" type="radio" name="person" id="Host" value="Host" required="required">
+                            </span>
+                            <span class="detail-l"> Host </span> 
+                            <span class="rdio3">
+                                <input onclick="showparticipant()"type="radio" name="person" id="Participant" value="Participant" required="required">
+                            </span>
+                            <span class="detail-r">Participant</span>
+                        </div>
+                    </div>     -->
+                    <div class="input-box">
+                        <span class="detail">Email ID:</span> 
+                        <input type="email" name="hostid" id="hostid" placeholder="Enter Your Email" required>
+                    </div>
+                    <div class="input-box">
+                        <span class="detail">Password :</span> 
+                        <input type="password" name="password" id="password" placeholder="Enter Your Password" required>
+                    </div>
+                    <div class="button">
+                        <a href="#show">
+                            <input type="submit" value="Enter">
+                        </a>
+                    </div>
+                    <div class="button">
+                        <input type="reset" value="Clear">
+                    </div>
+                </div>
+            </form>
+            {% if messages %}
+                <span class="message"><b>{{ messages }}</b></span>
+            {% endif %}
+        </div>
+      </div>
+      {% if allowed == "yes"%}
+        <div class="main6" id="show">
+            <h2 class="container3">Event Hosted By User :- <hr></h2>
+            <div class="pdetail">
+                <details>
+                    <summary><span style="font-size:20px;">Show Participants List :</span></summary>
+                    <div class="pform">
+                        <div class="pform-container">
+                            <form method = "POST" action = "/participant_list">
+                                {%csrf_token%}
+                                <div class="user-detail">
+                                    <div class="input-box">
+                                        <input type="text" name="eventid" id="eventid" placeholder="Enter Event Name" required>
+                                    </div>
+                                    <div class="button">
+                                        <input type="submit" value="Enter">
+                                    </div>
+                                    {% if messages %}
+                                        <span class="message"><b>{{ messages }}</b></span>
+                                    {% endif %}
+                    
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </details>
+            </div>
+            {% for event in event_list %}
+            <div class="main7">
+                <div class="container2">
+                    <div style="margin-bottom: 15px;">
+                        <p> <b>Event Name : </b>{{event.nEvent}}</p>
+                        <p> <b>Host Name : </b>{{event.name}}</p>
+                        <p> <b>Host Email Id : </b>{{event.host_email}}</p>
+                        <p> <b>Event Location : </b>{{event.location}}</p>
+                        <p> <b>Description : </b> {{event.desc}} </p>
+                        <p> <b>Event Date(s) : </b>{{event.stime}} <b> - </b>{{event.etime}}</p> 
+                        <p> <b>Registration Deadline : </b>{{event.deadline}} </p>
+                        <p> <b>Total Number of Participants Registrated : </b>{{event.nop}} </p>
+                        <hr>            
+                    </div>
+                </div>
+            </div>
+            {% endfor %}    
+        </div>
+      {% endif %}
+
+        <!-- <div class="main6" id="block2">
+            <h2 class="container3">Event Participated By User :-  <hr></h2>
+            {% for event in part_list %}
+            <div class="main7">
+                <div class="container2">
+                    <div style="margin-bottom: 15px;">
+                        <p> <b>Participant Name : </b> {{event.fname}} &nbsp;{{event.lname}}</p>
+                        <p> <b>Contact No : </b>{{event.num}}</p>
+                        <p> <b>Email ID : </b>{{event.email}}</p>
+                        <p> <b>Event Name : </b>{{event.nevent}}</p>
+                        <p> <b>No. Of Participants : </b> {{event.nopar}}</p>
+                        <hr>            
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div> -->
+
+        <script>
+            // function showhost() {            
+                //   document.getElementById("block1").style.display = "block";
+                //   document.getElementById("block2").style.display = "none";
+            //   }
+            // function showparticipant() {            
+            //     document.getElementById("block2").style.display = "block";
+            //     document.getElementById("block1").style.display = "none";
+            // }
+        </script>
+    
+    </body>
+</html>

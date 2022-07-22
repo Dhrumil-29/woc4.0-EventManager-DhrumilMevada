@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Details</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Luxurious+Roman&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/cssfile.css'%}">
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <div class="else">  
+            <a href="/">Home</a>
+          </div>
+          <div class="else">
+            <a href="/event_registration">Event Registration</a>
+          </div>
+          <div class="else">  
+            <a href="/participant_registration">Participant Registration</a>
+          </div>
+          <div class="else">  
+            <a href="/event_detail">Event Details</a>
+          </div>
+          <div class="lg">
+            <a href="/login"><span class = "right">User Profile</span></a>
+          </div>
+        </ul>
+      </nav>
+    </header>
+    <div class="main3">
+      <h1 class="container3">List of Participants :- 
+        <hr>
+        <br>
+        {% if messages %}
+        <span class="message"><b>{{ messages }}</b></span>
+        {% endif %}  
+      </h1>
+    </div>
+      {% for event in participant_list %}
+      <div class="main4">
+        <div class="container4">
+          <div style="margin-bottom: 15px;">
+            <h4 style="margin-bottom: 10px;"> 
+              <h2>Event Name :- <b>{{event.nevent}} </b></h2>  
+              <hr>                              
+            </h4>
+            <br>
+            <p> <b>Participant Name : </b> {{event.fname}} {{event.lname}}</p>
+            <p> <b>Contact No : </b>{{event.num}}</p>
+            <p> <b>Email ID : </b>{{event.email}}</p>
+            <!-- <p> <b>Event Name : </b>{{event.nevent}}</p> -->
+            <p> <b>No. Of Participants : </b> {{event.nopar}}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      
+    </body>
+    </html>
+    
